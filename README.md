@@ -13,7 +13,7 @@ The way of test parameterization and reading data from an Excel spreadsheet is d
 
 ## Common Functions
 
-All functions are defined in `User.js`. Look into this file for details.
+All functions are defined in [User.js](User.js). Look into this file for details.
 
 ### CrmLaunchSales
 
