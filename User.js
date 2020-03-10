@@ -11,6 +11,26 @@ if (!g_recording)
 	}
 }
 
+function LogAssert(/**string*/ msg)
+{
+	Log(msg);
+	Tester.Assert(msg, false);
+}
+
+function CrmFindObject(/**string*/ xpath)
+{
+	for(var i = 0; i < g_objectLookupAttempts; i++)
+	{
+		var obj = Navigator.Find(xpath);
+		if (obj)
+		{
+			return obj;
+		}
+		Global.DoSleep(g_objectLookupAttemptInterval);
+	}
+	return null;
+}
+
 /**
  * Launches Dynamics 365 for Sales in a browser. Dynamics365SalesUrl, UserName, Password must be set in Config.xlsx
  */
@@ -29,7 +49,7 @@ function CrmChangeArea(/**string*/ name)
 {
 	SeS('G_OpenAreaList').DoClick();
 	var xpath = "//li[@role='menuitemcheckbox' and normalize-space(.)='" + name + "']";
-	var obj = Navigator.Find(xpath);
+	var obj = CrmFindObject(xpath);
 	if (obj)	
     {
     	obj.object_name = name;
@@ -37,7 +57,7 @@ function CrmChangeArea(/**string*/ name)
 	}
 	else
 	{
-		Tester.Assert("Area element is not found: " + name, false);
+		LogAssert("CrmChangeArea: area element is not found: " + name, false);
 	}
 }
 
@@ -47,7 +67,7 @@ function CrmChangeArea(/**string*/ name)
 function CrmOpenEntity(/**string*/ entity)
 {
 	var xpath = "//li[@aria-label='" + entity + "' and contains(@id,'sitemap-entity')]";
-	var obj = Navigator.Find(xpath);
+	var obj = CrmFindObject(xpath);
 	if (obj)	
 	{
 		obj.object_name = entity;
@@ -56,7 +76,7 @@ function CrmOpenEntity(/**string*/ entity)
 	}
 	else
 	{
-		Tester.Assert("Entity element is not found: " + entity, false);
+		LogAssert("CrmOpenEntity: entity element is not found: " + entity, false);
 	}	
 }
 
@@ -66,7 +86,7 @@ function CrmOpenEntity(/**string*/ entity)
 function CrmClickButton(/**string*/ name)
 {
 	var xpath = "//button[@aria-label='" + name + "']";
-	var obj = Navigator.Find(xpath);
+	var obj = CrmFindObject(xpath);
 	if (obj)	
 	{
 		obj.object_name = name;
@@ -74,7 +94,7 @@ function CrmClickButton(/**string*/ name)
 	}
 	else
 	{
-		Tester.Assert("Button element is not found: " + name, false);
+		LogAssert("CrmClickButton: button element is not found: " + name, false);
 	}
 }
 
@@ -84,7 +104,7 @@ function CrmClickButton(/**string*/ name)
 function CrmSelectTab(/**string*/ name)
 {
 	var xpath = "//li[@role='tab' and @title='" + name + "']";
-	var obj = Navigator.Find(xpath);
+	var obj = CrmFindObject(xpath);
 	if (obj)	
 	{
 		obj.object_name = name;
@@ -92,8 +112,87 @@ function CrmSelectTab(/**string*/ name)
 	}
 	else
 	{
-		Tester.Assert("Tab element is not found: " + name, false);
+		LogAssert("CrmSelectTab: tab element is not found: " + name, false);
 	}
+}
+
+/**
+ * Selects value from a lookup field.
+ * @param field Repository ID of a lookup object.
+ * @param value Value to select.
+ */
+function CrmLookupField(/**objectId*/ field, /**string*/ value) 
+{
+	var obj = SeS(field);
+	if (obj)
+	{
+		obj._DoSetText(value);
+		var xpath = "//ul//label/span[contains(text(),'" + value + "')]";
+		var item = CrmFindObject(xpath);
+		
+		if (!item)
+		{
+			LogAssert("CrmLookupField: item is not found: " + value, false);
+		}
+		
+		item.object_name = value;
+		item.DoClick();
+		
+	}
+	else
+	{
+		LogAssert("CrmLookupField: field is not found: " + field, false);
+	}
+}
+
+/**
+ * Sets value to a date field.
+ * @param field Repository ID  of a date object.
+ * @param value Date to set.
+ */
+function CrmSetDate(/**objectId*/ field, /**string*/ value)
+{
+	var obj = SeS(field);
+	if (obj)
+	{
+		obj.DoClick();
+		obj.DoSetText(value);
+		obj._DoSendKeys("{TAB}");
+	}
+	else
+	{
+		LogAssert("CrmSetDate: field is not found: " + field, false);
+	}
+}
+
+/**
+ * Searches for records.
+ * @param value Value to search for.
+ */
+function CrmSearchRecords(/**string*/ value)
+{
+	var input = CrmFindObject("//input[contains(@id,'quickFind_text')]");
+	var button = CrmFindObject("//button[contains(@id,'quickFind_button')]");
+	
+	if (!input)
+	{
+		LogAssert("CrmSearchRecords: input field not found");
+		return;
+	}
+	
+	if (!button)
+	{
+		LogAssert("CrmSearchRecords: button field not found");
+		return;
+	}
+	
+	
+	input.object_name = "SearchField";
+	button.object_name = "SearchButton";
+	
+	input.DoClick();
+	input.DoSetText(value);
+	button.DoClick();
 }
 
 /**
@@ -148,6 +247,9 @@ function LoginMicrosoftOnline(/**string*/ url, /**string*/ userName, /**string*/
 	}
 }
 
+/**
+ * Saves DOM tree of the current page to dom.xml file.
+ */
 function CrmSaveDom()
 {
 	var domTree = Navigator.GetDomTree();
@@ -160,3 +262,25 @@ function CrmSaveDom()
 		Tester.Message("Failed to get DOM tree");
 	}
 }
+
+/**
+ * Writes key/value pair to Output.xlsx
+ * @param key
+ * @param value
+ */
+function SetOutputValue(/**string*/ key, /**string*/ value)
+{
+	Global.SetProperty(key, value, "%WORKDIR%\\Output.xlsx");
+}
+
+
+/**
+ * Reads value from Output.xlsx
+ * @param key
+ * @param [defValue]
+ */
+function GetOutputValue(/**string*/ key, /**string*/ defValue)
+{
+	return Global.GetProperty(key, defValue, "%WORKDIR%\\Output.xlsx");
+}
+
