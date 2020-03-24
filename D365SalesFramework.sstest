@@ -46,6 +46,9 @@
         <Path>Objects.js</Path>
       </TestFile>
       <TestFile>
+        <Path>Output.xlsx</Path>
+      </TestFile>
+      <TestFile>
         <Path>TC_CreateNewLead\TC_CreateNewLead.sstest</Path>
       </TestFile>
       <TestFile>
