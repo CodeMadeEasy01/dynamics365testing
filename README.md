@@ -4,8 +4,8 @@ Framework for testing Microsoft Dynamics 365 for Sales.
 
 - Reusable functions are defined in `User.js`.
 - Data for each test case is defined in `Data.xlsx`.
-- `Dropdowns.xlsx` contains lists of values for RVL dropdowns.
-- `Output.xlsx` is used to persist data between test executions.
+- `Dropdowns.xlsx` contains lists of values for [RVL dropdowns](https://rapisedoc.inflectra.com/Guide/rvl_editor/#param-dropdowns).
+- `Output.xlsx` is used to persist data between test executions (see SetOutputValue, GetOutputValue common functions below).
  
 The way of test parameterization and reading data from an Excel spreadsheet is described in the docs:
 
@@ -86,3 +86,15 @@ Searches for records.
 ![CrmSearchRecords RVL](Media/CrmSearchRecords.png)
 
 ![SearchRecords RVL](Media/SearchRecords.png)
+
+### SetOutputValue
+
+Writes key/value pair to Output.xlsx
+
+![SetOutputValue RVL](Media/SetOutputValue.png)
+
+### GetOutputValue
+
+Reads value from Output.xlsx
+
+![GetOutputValue RVL](Media/GetOutputValue.png)
