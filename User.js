@@ -62,6 +62,18 @@ function CrmChangeArea(/**string*/ name)
 	}
 }
 
+function PrintAreaItems()
+{
+	SeS('G_OpenAreaList').DoClick();
+	var xpath = "//li[@role='menuitemcheckbox']";
+	var items = Navigator.DOMFindByXPath(xpath, true);
+	for(var i = 0; i < items.length; i++)
+	{
+		var caption = items[i].GetInnerText();
+		Tester.Message(caption);
+	}
+}
+
 /**
  * Opens entity in the site map.
  */
@@ -144,6 +156,25 @@ function CrmLookupField(/**objectId*/ field, /**string*/ value)
 	else
 	{
 		LogAssert("CrmLookupField: field is not found: " + field, false);
+	}
+}
+
+/**
+ * Scrolls to an element with given data-id
+ * To find out the data-id you may use //div[@data-id] query in Web Spy.
+ */
+function CrmScrollTo(/**string*/ dataId)
+{
+	var xpath = "//div[@data-id='" + dataId + "']";
+	var obj = CrmFindObject(xpath);
+	if (obj)	
+	{
+		obj.object_name = dataId;
+		obj.DoEnsureVisible();
+	}
+	else
+	{
+		LogAssert("CrmScrollTo: element is not found: " + dataId, false);
 	}
 }
 

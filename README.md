@@ -71,6 +71,10 @@ Selects value from a lookup field.
 
 ![LookupField RVL](Media/LookupField.png)
 
+### SrmScrollTo
+
+Scrolls to an element with given `data-id` attribute value. To find out the data-id you may use `//div[@data-id]` query in the Web Spy.
+
 ### CrmSetDate
 
 Sets value to a date field.
