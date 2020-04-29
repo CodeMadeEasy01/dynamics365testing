@@ -33,6 +33,31 @@ function CrmFindObject(/**string*/ xpath)
 }
 
 /**
+ * Launches Dynamics 365 in a browser and opens specified module. Dynamics365Url, UserName, Password must be set in Config.xlsx
+ */
+function CrmLaunch(/**string*/ module)
+{
+	var url = Global.GetProperty("Dynamics365Url", "", "%WORKDIR%\\Config.xlsx");
+	var usr = Global.GetProperty("UserName", "", "%WORKDIR%\\Config.xlsx");
+	var pwd = Global.GetProperty("Password", "", "%WORKDIR%\\Config.xlsx");
+	LoginMicrosoftOnline(url, usr, pwd);
+	CrmFindObject("//iframe[@id='AppLandingPage']");
+	Global.DoSleep(3000);
+	var xpath = "//iframe[@id='AppLandingPage']@@@//div[@data-type='app-title' and @title='" + module + "']";
+	var obj = CrmFindObject(xpath);
+	if (obj)	
+    {
+    	obj.object_name = module;
+    	obj.DoEnsureVisible();
+    	obj.DoClick();
+	}
+	else
+	{
+		LogAssert("CrmLaunch: module element is not found: " + module, false);
+	}	
+}
+
+/**
  * Launches Dynamics 365 for Sales in a browser. Dynamics365SalesUrl, UserName, Password must be set in Config.xlsx
  */
 function CrmLaunchSales()

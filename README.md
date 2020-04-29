@@ -25,6 +25,14 @@ You may change the profile in `User.js` or pass `g_browserLibrary` value from Sp
 
 All functions are defined in [User.js](User.js). Look into this file for details.
 
+### CrmLaunch
+
+Launches specific app of Dynamics 365 in a browser. `Dynamics365Url`, `UserName`, `Password` must be set in `Config.xlsx`.
+
+![CrmLaunch RVL](Media/CrmLaunch.png)
+
+![Launch RVL](Media/Launch.png)
+
 ### CrmLaunchSales
 
 Launches Dynamics 365 for Sales in a browser. `Dynamics365SalesUrl`, `UserName`, `Password` must be set in `Config.xlsx`.
