@@ -81,7 +81,7 @@ Selects value from a lookup field.
 
 ### SrmScrollTo
 
-Scrolls to an element with given `data-id` attribute value. To find out the data-id you may use `//div[@data-id]` query in the Web Spy.
+Scrolls to an element with given `data-id` attribute value. To find out the data-id you may use `//div[@data-id and @data-z-index]` query in the Web Spy.
 
 ### CrmSetDate
 
