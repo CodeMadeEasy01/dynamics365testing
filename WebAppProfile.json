@@ -1,0 +1,57 @@
+{
+	record: 
+	{
+		attributes: [
+			{ name: "href",	exclude: "javascript:" },
+			{ name: "role", exclude: "presentation" },
+			{ name: "type" },
+			{ name: "data-id", exclude: "ProcessBreadCrumb" },
+			{ name: "title", exclude: "[\\s]" },
+			{ name: "data-text"},
+			{ name: "data-type"},
+			{ name: "id", notEmpty: true, exclude: "\\d"},
+			{ name: "text" }
+		],
+		classes: [
+			{ name: "Grid.ReadOnlyGrid" }
+		],
+		anchors: [
+			/*{ xpath: "//div[@id='PLACEHOLDER4562098222336222227650']" }*/
+		],
+		handlers:
+		{
+			elementName: function(el)
+			{
+				var label = __getAttribute(el, "aria-label");
+				if (label) 
+				{
+					if (label.indexOf(",") > 0)
+					{
+						return label.split(",")[0];
+					}
+					return label;
+				}
+				return null;
+			},
+			skipAttribute: function (node, attr, value)
+			{
+				var tag = node.tagName.toLowerCase();
+				if (attr == "title")
+				{
+					if (tag == "textarea" || tag == "select" || tag == "input")
+					{
+						return true;
+					}
+				}
+				else if (attr == "text")
+				{
+					if (__hasAttribute(node, "data-id") || __hasAttribute(node, "id"))
+					{
+						return true;
+					}
+				}
+				return false;
+			}
+		}
+	}
+} 
