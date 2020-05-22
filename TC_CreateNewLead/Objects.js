@@ -231,7 +231,7 @@ var saved_script_objects={
 		"window_name": "Lead: Lead: New Lead - Microsoft Dynamics 365",
 		"xpath": "//div[@role='presentation' and @data-id='header_statuscode.fieldControl-pickliststatus-comboBox']",
 		"title": "Lead: Lead: New Lead - Microsoft Dynamics 365",
-		"url": "https://inflectra3650.crm.dynamics.com/main.aspx?appid=aba92e57-a251-ea11-a815-000d3a337a2d&pagetype=entityrecord&etn=lead"
+		"url": ""
 	},
 	"Status": {
 		"locations": [
@@ -257,7 +257,7 @@ var saved_script_objects={
 		"window_name": "Lead: Lead: New Lead - Microsoft Dynamics 365",
 		"xpath": "//span[@role='button' and @data-id='header_statuscode.fieldControl-pickliststatus-comboBox-text']",
 		"title": "Lead: Lead: New Lead - Microsoft Dynamics 365",
-		"url": "https://inflectra3650.crm.dynamics.com/main.aspx?appid=aba92e57-a251-ea11-a815-000d3a337a2d&pagetype=entityrecord&etn=lead"
+		"url": ""
 	},
 	"Contacted": {
 		"locations": [
@@ -283,7 +283,7 @@ var saved_script_objects={
 		"window_name": "Lead: Lead: New Lead - Microsoft Dynamics 365",
 		"xpath": "//li[@role='option' and @data-text='Contacted']",
 		"title": "Lead: Lead: New Lead - Microsoft Dynamics 365",
-		"url": "https://inflectra3650.crm.dynamics.com/main.aspx?appid=aba92e57-a251-ea11-a815-000d3a337a2d&pagetype=entityrecord&etn=lead"
+		"url": ""
 	},
 	"LeadsGrid": {
 		"locations": [
@@ -309,7 +309,7 @@ var saved_script_objects={
 		"window_name": "Leads My Open Leads - Microsoft Dynamics 365",
 		"xpath": "//div[@data-type='Grid' and contains(concat(' ', @class, ' '), ' Grid.ReadOnlyGrid ')]",
 		"title": "Leads My Open Leads - Microsoft Dynamics 365",
-		"url": "https://inflectra3650.crm.dynamics.com/main.aspx?appid=aba92e57-a251-ea11-a815-000d3a337a2d&pagetype=entitylist&etn=lead"
+		"url": ""
 	},
 	"Delete": {
 		"locations": [
@@ -335,7 +335,7 @@ var saved_script_objects={
 		"window_name": "Leads My Open Leads - Microsoft Dynamics 365",
 		"xpath": "//button[@type='button' and @data-id='lead|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.lead.DeleteMenu' and @data-lp-id='HomePageGrid:lead-lead|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.lead.DeleteMenu']/span/span[2]",
 		"title": "Leads My Open Leads - Microsoft Dynamics 365",
-		"url": "https://inflectra3650.crm.dynamics.com/main.aspx?appid=aba92e57-a251-ea11-a815-000d3a337a2d&pagetype=entitylist&etn=lead"
+		"url": ""
 	},
 	"Delete1": {
 		"locations": [
@@ -361,6 +361,32 @@ var saved_script_objects={
 		"window_name": "Leads My Open Leads - Microsoft Dynamics 365",
 		"xpath": "//button[@type='button' and @data-id='confirmButton' and @id='confirmButton']",
 		"title": "Leads My Open Leads - Microsoft Dynamics 365",
-		"url": "https://inflectra3650.crm.dynamics.com/main.aspx?appid=aba92e57-a251-ea11-a815-000d3a337a2d&pagetype=entitylist&etn=lead"
+		"url": ""
+	},
+	"Refresh": {
+		"locations": [
+			{
+				"locator_name": "HTML",
+				"location": {
+					"xpath": "param:xpath",
+					"url": "param:url",
+					"title": "param:title"
+				}
+			}
+		],
+		"window_class": "Chrome_WidgetWin_1",
+		"object_text": "Chrome Legacy Window",
+		"object_role": "ROLE_SYSTEM_WINDOW",
+		"object_class": "Chrome_RenderWidgetHostHWND",
+		"version": 0,
+		"object_type": "HTMLObject",
+		"object_flavor": "Cell",
+		"object_name": "Refresh",
+		"ignore_object_name": true,
+		"object_library": "Chrome HTML",
+		"window_name": "Leads My Open Leads - Microsoft Dynamics 365",
+		"xpath": "//span[text()='Refresh']",
+		"title": "Leads My Open Leads - Microsoft Dynamics 365",
+		"url": ""
 	}
 };
