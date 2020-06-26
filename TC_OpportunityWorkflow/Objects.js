@@ -467,7 +467,7 @@ var saved_script_objects={
 		"title": "Opportunity: Opportunity: Test Automation Software - Microsoft Dynamics 365",
 		"url": ""
 	},
-	"IMG": {
+	"OverflowButton": {
 		"locations": [
 			{
 				"locator_name": "HTML",
@@ -479,17 +479,17 @@ var saved_script_objects={
 			}
 		],
 		"window_class": "Chrome_WidgetWin_1",
-		"object_text": "Chrome Legacy Window",
+		"object_text": "",
 		"object_role": "ROLE_SYSTEM_WINDOW",
 		"object_class": "Chrome_RenderWidgetHostHWND",
 		"version": 0,
 		"object_type": "HTMLObject",
-		"object_flavor": "Image",
-		"object_name": "IMG",
+		"object_flavor": "Button",
+		"object_name": "BUTTON",
 		"ignore_object_name": true,
 		"object_library": "Chrome HTML",
 		"window_name": "Opportunity: Opportunity: Test Automation Software - Microsoft Dynamics 365",
-		"xpath": "//button[@type='button' and @data-id='OverflowButton']/span/span[1]/img[@title='']",
+		"xpath": "//button[@type='button' and @data-lp-id='Form:opportunity-OverflowButton']",
 		"title": "Opportunity: Opportunity: Test Automation Software - Microsoft Dynamics 365",
 		"url": ""
 	},

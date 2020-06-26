@@ -3,6 +3,9 @@
 g_recordUrls = false;
 g_browserLibrary = "Chrome";
 
+g_objectLookupAttempts = 60;
+g_objectLookupAttemptInterval = 500;
+
 if (!g_recording)
 {
 	TestInit = function()

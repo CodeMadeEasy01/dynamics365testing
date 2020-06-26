@@ -6900,7 +6900,7 @@
 		"title": "Opportunity: Opportunity: Test Automation Software - Microsoft Dynamics 365",
 		"url": ""
 	},
-	"IMG": {
+	"OverflowButton": {
 		"actions": [
 			{
 				"name": "DoAction",

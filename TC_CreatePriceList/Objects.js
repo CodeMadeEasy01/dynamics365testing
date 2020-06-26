@@ -141,7 +141,7 @@ var saved_script_objects={
 			}
 		],
 		"window_class": "Chrome_WidgetWin_1",
-		"object_text": "Chrome Legacy Window",
+		"object_text": "Price List ItemsPrice List Items",
 		"object_role": "ROLE_SYSTEM_WINDOW",
 		"object_class": "Chrome_RenderWidgetHostHWND",
 		"version": 0,
@@ -151,7 +151,7 @@ var saved_script_objects={
 		"ignore_object_name": true,
 		"object_library": "Chrome HTML",
 		"window_name": "Price List: Price Level: TestPriceList - Microsoft Dynamics 365",
-		"xpath": "//li[@role='tab' and @data-id='tablist-Price_List_Items' and @data-lp-id='form-tab-Price_List_Items']",
+		"xpath": "//li[@role='tab' and @data-id='tablist-Price_List_Items']",
 		"title": "Price List: Price Level: TestPriceList - Microsoft Dynamics 365",
 		"url": ""
 	},
@@ -307,7 +307,7 @@ var saved_script_objects={
 		"ignore_object_name": true,
 		"object_library": "DomDynamicsCrm",
 		"window_name": "Price Lists Active Price Lists - Microsoft Dynamics 365",
-		"xpath": "//div[@role='presentation' and @data-id='entity_control_container' and @data-lp-id='MscrmControls.Grid.ReadOnlyGrid|entity_control|pricelevel|eec94b91-98c3-43ca-a2e6-4cb36ddf71fc|pricelevel' and @data-type='Grid' and contains(concat(' ', @class, ' '), ' Grid.ReadOnlyGrid ')]",
+		"xpath": "//div[@data-type='Grid' and contains(concat(' ', @class, ' '), ' Grid.ReadOnlyGrid ')]",
 		"title": "Price Lists Active Price Lists - Microsoft Dynamics 365",
 		"url": ""
 	},
@@ -437,8 +437,34 @@ var saved_script_objects={
 		"ignore_object_name": true,
 		"object_library": "Chrome HTML",
 		"window_name": "Price List: Price Level: TestPriceList - Microsoft Dynamics 365",
-		"xpath": "//li[@role='tab' and @data-id='tablist-General' and @data-lp-id='form-tab-General']",
+		"xpath": "//li[@role='tab' and @data-id='tablist-General']",
 		"title": "Price List: Price Level: TestPriceList - Microsoft Dynamics 365",
+		"url": ""
+	},
+	"Pricing_information": {
+		"locations": [
+			{
+				"locator_name": "HTML",
+				"location": {
+					"xpath": "param:xpath",
+					"url": "param:url",
+					"title": "param:title"
+				}
+			}
+		],
+		"window_class": "Chrome_WidgetWin_1",
+		"object_text": "Chrome Legacy Window",
+		"object_role": "ROLE_SYSTEM_WINDOW",
+		"object_class": "Chrome_RenderWidgetHostHWND",
+		"version": 0,
+		"object_type": "HTMLObject",
+		"object_flavor": "Generic",
+		"object_name": "Pricing information",
+		"ignore_object_name": true,
+		"object_library": "Chrome HTML",
+		"window_name": "Price List Item: Product Price List: New Price List Item - Microsoft Dynamics 365",
+		"xpath": "//li[@role='tab' and @data-id='tablist-Pricing information']",
+		"title": "Price List Item: Product Price List: New Price List Item - Microsoft Dynamics 365",
 		"url": ""
 	}
 };
