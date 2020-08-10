@@ -169,7 +169,7 @@ function CrmLookupField(/**objectId*/ field, /**string*/ value)
 	{
 		obj._DoSetText(value);
 		Global.DoSleep(2000);
-		var xpath = "//ul//label/span[contains(text(),'" + value + "')]";
+		var xpath = "//ul//span[contains(text(),'" + value + "')]";
 		var item = CrmFindObject(xpath);
 		
 		if (!item)
@@ -313,7 +313,7 @@ function LoginMicrosoftOnline(/**string*/ url, /**string*/ userName, /**string*/
  */
 function CrmSaveDom()
 {
-	var domTree = Navigator.GetDomTree();
+	var domTree = Navigator.GetDomTree(false);
 	if (domTree)
 	{
 		Navigator.SaveDomToXml("dom.xml", domTree);
