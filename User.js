@@ -169,7 +169,7 @@ function CrmLookupField(/**objectId*/ field, /**string*/ value)
 	{
 		obj._DoSetText(value);
 		Global.DoSleep(2000);
-		var xpath = "//ul//span[contains(text(),'" + value + "')]";
+		var xpath = "//ul[@aria-label='Lookup Search Results']//span[contains(text(),'" + value + "')]";
 		var item = CrmFindObject(xpath);
 		
 		if (!item)
