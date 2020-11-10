@@ -645,7 +645,7 @@ var saved_script_objects={
 		"ignore_object_name": true,
 		"object_library": "Chrome HTML",
 		"window_name": "Opportunity: Opportunity: Test Automation Software - Microsoft Dynamics 365",
-		"xpath": "//label[@data-id='MscrmControls.Containers.ProcessStageControl-stageContentClose4']",
+		"xpath": "//label[contains(@data-id,'MscrmControls.Containers.ProcessStageControl-stageContentClose')]",
 		"title": "Opportunity: Opportunity: Test Automation Software - Microsoft Dynamics 365",
 		"url": ""
 	},

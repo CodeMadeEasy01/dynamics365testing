@@ -77,7 +77,7 @@ function CrmLaunchSales()
 function CrmChangeArea(/**string*/ name)
 {
 	SeS('G_OpenAreaList').DoClick();
-	var xpath = "//li[@role='menuitemcheckbox' and normalize-space(.)='" + name + "']";
+	var xpath = "//li[(@role='menuitemcheckbox' or @role='menuitemradio') and normalize-space(.)='" + name + "']";
 	var obj = CrmFindObject(xpath);
 	if (obj)	
     {
@@ -93,12 +93,13 @@ function CrmChangeArea(/**string*/ name)
 function PrintAreaItems()
 {
 	SeS('G_OpenAreaList').DoClick();
-	var xpath = "//li[@role='menuitemcheckbox']";
+	var xpath = "//li[@role='menuitemcheckbox' or @role='menuitemradio']";
 	var items = Navigator.DOMFindByXPath(xpath, true);
 	for(var i = 0; i < items.length; i++)
 	{
 		var caption = items[i].GetInnerText();
-		Tester.Message(caption);
+		var role = items[i].DoDOMGetAttribute("role");
+		Tester.Message(caption + " / " + role);
 	}
 }
 
