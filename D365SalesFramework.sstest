@@ -27,6 +27,31 @@
     <FilterPath />
     <Groups>
       <TestGroup>
+        <Name>Lib</Name>
+        <IsFilterGroup>false</IsFilterGroup>
+        <FilterWildcard>*.*</FilterWildcard>
+        <FilterPath>Lib</FilterPath>
+        <Groups>
+          <TestGroup>
+            <Name>LibDynamics365Crm</Name>
+            <IsFilterGroup>false</IsFilterGroup>
+            <FilterWildcard>*.*</FilterWildcard>
+            <FilterPath>LibDynamics365Crm</FilterPath>
+            <Groups />
+            <TestFiles>
+              <TestFile>
+                <Path>Lib\LibDynamics365Crm\LibDynamics365Crm.js</Path>
+              </TestFile>
+            </TestFiles>
+          </TestGroup>
+        </Groups>
+        <TestFiles>
+          <TestFile>
+            <Path>Lib\LibDynamics365Crm.jslib</Path>
+          </TestFile>
+        </TestFiles>
+      </TestGroup>
+      <TestGroup>
         <Name>Reports</Name>
         <IsFilterGroup>true</IsFilterGroup>
         <FilterWildcard>*.trp</FilterWildcard>
