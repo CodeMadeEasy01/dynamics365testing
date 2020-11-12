@@ -266,11 +266,13 @@ function CrmSearchRecords(/**string*/ value)
  */
 function LoginMicrosoftOnline(/**string*/ url, /**string*/ userName, /**string*/ password)
 {
+	Tester.SuppressReport(true);
 	try
 	{
 		var p = Global.DoDecrypt(password);
 		if(p) password = p;
 	} catch(e){}
+	Tester.SuppressReport(false);
 
 	var o = {
 		"UseAnotherAccount": "//div[@id='otherTileText']",
