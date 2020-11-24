@@ -27,7 +27,7 @@ All functions are defined in [User.js](User.js). Look into this file for details
 
 **Note:** If you are on Rapise 6.6+ you may use global `Crm` object.
 
-![DAX](Media/Crm.png)
+![Global Object](Media/Crm.png)
 
 Every function with `Crm` prefix is now also an action of `Crm` (without the prefix). These two variants are equavalent:
 
