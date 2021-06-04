@@ -1,18 +1,56 @@
 //Put your custom functions and variables in this file
 
 g_recordUrls = false;
-g_browserLibrary = "Chrome";
+
+if (typeof(g_globalBrowserProfile) != "undefined")
+{
+	g_browserLibrary = g_globalBrowserProfile;
+}
+else
+{
+	g_browserLibrary = "Chrome";
+}
 
 g_objectLookupAttempts = 60;
 g_objectLookupAttemptInterval = 500;
 
-if (!g_recording)
+
+function TestInit()
 {
-	TestInit = function()
+	if (g_entryPointName == "Test")
 	{
-		Global.DoLoadObjects('%WORKDIR%/Objects.js');
-		Navigator.EnsureVisibleVerticalAlignment = "center";
+		KillAllBrowsers();
 	}
+
+	Global.DoLoadObjects('%WORKDIR%/Objects.js');
+	Navigator.QuitIfNotConnected = false;
+	Navigator.EnsureVisibleVerticalAlignment = "center";
+}
+
+function TestFinish()
+{
+	if(Tester.GetTestStatus() != Tester.Pass)
+	{
+		Navigator.DoScreenshot();
+	}
+
+	if (g_entryPointName == "Test")
+	{
+		Tester.Message("About to close Navigator...");
+		Navigator.Close();
+		Tester.Message("Navigator closed");
+		KillAllBrowsers();
+	}
+}
+
+function KillAllBrowsers()
+{
+	Global.DoMouseMove(0, 0);
+	Global.DoKillByName('iexplore.exe');
+	Global.DoKillByName('firefox.exe');
+	Global.DoKillByName('msedge.exe');
+	Global.DoKillByName('chrome.exe');
+	Global.DoKillByName('RapiseChromeProxy.exe');
 }
 
 function LogAssert(/**string*/ msg)
@@ -76,6 +114,8 @@ function CrmLaunchSales()
  */
 function CrmChangeArea(/**string*/ name)
 {
+	Global.DoWaitFor('G_OpenAreaList', 120000);
+
 	SeS('G_OpenAreaList').DoClick();
 	var xpath = "//li[(@role='menuitemcheckbox' or @role='menuitemradio') and normalize-space(.)='" + name + "']";
 	var obj = CrmFindObject(xpath);
@@ -128,9 +168,10 @@ function CrmOpenEntity(/**string*/ entity)
 function CrmClickButton(/**string*/ name)
 {
 	var xpath = "//button[@aria-label='" + name + "']";
-	var obj = CrmFindObject(xpath);
+	var obj = Navigator.DoWaitFor(xpath, 120000);
 	if (obj)	
 	{
+		Global.DoSleep(5000);
 		obj.object_name = name;
 		obj.DoClick();
 	}
