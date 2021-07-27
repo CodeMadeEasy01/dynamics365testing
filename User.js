@@ -230,6 +230,37 @@ function CrmLookupField(/**objectId*/ field, /**string*/ value)
 }
 
 /**
+ * Clears value from a lookup field.
+ * @param field Repository ID of a lookup object label.
+ */
+function CrmClearField(/**objectId*/ field) 
+{
+	var obj = SeS(field);
+	if (obj)
+	{
+		var container = obj._DoDOMFindParentWithAttribute('data-id', 'regex:.*');
+		if (container)
+		{
+			var value = container._DoDOMQueryXPath('.//li');
+			if (value && value.length)
+			{
+				value[0]._DoMouseMove();
+				Global.DoSleep(100);
+				var buttons = container._DoDOMQueryXPath('.//button');
+				if (buttons && buttons.length)
+				{
+					buttons[0].DoClick();
+				}
+			}
+		}
+	}
+	else
+	{
+		LogAssert("CrmClearField: field is not found: " + field, false);
+	}
+}
+
+/**
  * Scrolls to an element with given data-id
  * To find out the data-id you may use //div[@data-id] query in Web Spy.
  */
