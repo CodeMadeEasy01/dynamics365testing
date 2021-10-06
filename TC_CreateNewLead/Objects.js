@@ -125,7 +125,7 @@ var saved_script_objects={
 		"ignore_object_name": true,
 		"object_library": "Chrome HTML",
 		"window_name": "Lead: Lead: New Lead - Microsoft Dynamics 365",
-		"xpath": "//button[@type='button' and @data-id='header_overflowButton' and @id='headerFieldsExpandButton']",
+		"xpath": "//button[@type='button' and @data-id='header_overflowButton' and contains(@id,'headerFieldsExpandButton')]",
 		"title": "Lead: Lead: New Lead - Microsoft Dynamics 365",
 		"url": ""
 	},

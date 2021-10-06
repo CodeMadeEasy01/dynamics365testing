@@ -60,6 +60,14 @@
 				"paramInfo": {}
 			},
 			{
+				"name": "ClearField",
+				"description": "",
+				"type": "",
+				"returns": "",
+				"signature": "/**objectId*/ field",
+				"paramInfo": {}
+			},
+			{
 				"name": "ScrollTo",
 				"description": "",
 				"type": "",

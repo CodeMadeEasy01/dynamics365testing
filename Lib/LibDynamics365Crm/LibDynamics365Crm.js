@@ -35,6 +35,11 @@ function Crm_LookupField(/**objectId*/ field, /**string*/ value)
 	CrmLookupField(field, value);
 }
 
+function Crm_ClearField(/**objectId*/ field) 
+{
+	CrmClearField(field, value);
+}
+
 function Crm_ScrollTo(/**string*/ dataId)
 {
 	CrmScrollTo(dataId);
